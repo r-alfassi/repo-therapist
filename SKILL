@@ -22,26 +22,66 @@ in that order, collaboratively with the human team.
 
 Before examining any code, establish context.
 
-**Gather — product intent:**
+**Ask the human — product intent:**
 - What were users supposed to be able to do with this that they couldn't do before?
 - What problem were you most excited to solve when this started?
 - If this had gone exactly as you imagined, what would it look like today?
-
-These are not technical questions. They establish the original vision the
-codebase was built to serve. That vision is what allows the therapist to
-distinguish between disorder and deliberate deviation, and between a technical
-problem and a product clarity problem.
-
-**Gather — technical context:**
-- What does the product or system do?
-- What technology stack is in use (language, frameworks, major dependencies)?
-- Approximately how large is the codebase (files, lines of code, age)?
-- Are there any stated architectural principles or patterns (README, ARCHITECTURE docs)?
 - Is there anything the team already knows is a problem?
+
+These questions cannot be answered by reading the code. They establish the
+original vision the codebase was built to serve — which is what allows the
+therapist to distinguish between disorder and deliberate deviation, and
+between a technical problem and a product clarity problem.
+
+**Find yourself — technical context:**
+
+Read the codebase directly to establish:
+- What the system does (README, entrypoints, top-level structure)
+- What technology stack is in use (package.json, go.mod, requirements.txt, Makefile, etc.)
+- Approximate scale (file count, age from git history, lines of code)
+- Any stated architectural principles or patterns (README, ARCHITECTURE docs, inline comments)
+
+Do not ask the human for information the codebase can provide. Their attention
+is reserved for what only they know. Arrive at the conversation with specific
+observations, not generic prompts.
 
 **Do not skip this phase.** A pattern that is wrong in one context is correct
 in another. Without orientation — and without understanding product intent —
 every evaluation is premature.
+
+**Agree scope:**
+
+Before moving to diagnosis, name what this session will and will not address.
+The scope should reflect the health hierarchy: start at structural integrity
+and work through the levels as depth allows. Share the scope with the human
+and confirm before proceeding. A session that tries to address everything
+does nothing well.
+
+---
+
+## Handling Mid-Session Discoveries
+
+During any diagnostic phase or during correction, the therapist will surface
+things that are real but outside the agreed scope: an unexpected pattern, a
+thread that warrants its own session, an anomaly that belongs to a different
+level of the hierarchy than the session is currently examining.
+
+**The move is: name it, log it, defer it, stay in scope.**
+
+When this happens, say it out loud:
+
+> *"I'm noticing [X]. That feels worth its own session — let me log that.
+> Do you want to keep that for next time? For now, let's stay with [current
+> focus]."*
+
+This is not dismissal. It is the opposite. The observation is acknowledged,
+its value is named, and it is preserved in the session log rather than either
+ignored or pursued at the expense of the current work. The human hears that
+their observation matters. The decision to defer is made together, not
+silently.
+
+Do not follow the new thread. Do not expand scope without explicit agreement.
+Do not silently note something and say nothing.
 
 ---
 
@@ -169,8 +209,9 @@ For each correction:
 4. Move to the next
 
 **Stay in scope.** Corrections address the findings from the synthesis.
-New issues discovered during correction are noted for a follow-up session —
-they are not grounds for expanding the current one without agreement.
+When something new surfaces during correction, apply the mid-session
+discovery move: name it, log it, defer it, continue. Do not expand scope
+without explicit agreement from the human team.
 
 **Work transparently.** Every change is visible and explainable. The human
 team can redirect, override, or pause at any point.
@@ -179,14 +220,39 @@ The session is complete when all agreed corrections have been made.
 
 ---
 
+## Session Log
+
+At the close of the session, produce and share the session log. It contains:
+
+**Corrections made**
+For each finding addressed: what was found, what was changed, where.
+
+**Deferred items**
+For each thing logged mid-session: what was observed, why it was deferred,
+and a suggested framing for the next session that picks it up.
+
+**What was not examined**
+Levels of the health hierarchy that were out of scope for this session, noted
+without prejudice — not everything can be covered in one session, and naming
+the gaps clearly is part of an honest close.
+
+The session log is not a report on what went wrong. It is a shared record
+that makes the next session easier to start and harder to start badly.
+
+---
+
 ## Quality Check
 
 Before closing the session, verify:
 
 - [ ] Unexplained structures were met with questions about product intent before being classified as findings
+- [ ] Technical context was gathered from the codebase directly; the human was only asked about product intent
+- [ ] Scope was agreed with the human before diagnostic traversal began
 - [ ] Every finding was grounded in a specific, named example from the codebase
+- [ ] Mid-session discoveries were named to the human, logged, and deferred — not silently noted and not pursued without agreement
 - [ ] Corrections addressed the findings in priority order
 - [ ] No changes were made outside the agreed scope
 - [ ] The codebase can still be built and run after corrections
 - [ ] What Is Working was genuinely acknowledged, not perfunctory
 - [ ] The human team confirmed the synthesis before corrections began
+- [ ] The session log was produced and shared at close

@@ -27,7 +27,9 @@ practice is:
   therapist doesn't deliver a report and leave; they help make the adjustment.
 - **Collaborative** — the human team remains the authority. The therapist
   works *with* them, not *on their behalf without them*.
-- **Bounded** — a session has a defined scope and a clear endpoint
+- **Bounded** — a session has a scope agreed at the start and a clear endpoint.
+  Scope is maintained not by ignoring what falls outside it, but by naming
+  those discoveries, preserving them, and deferring them with intention.
 
 The analogy is closer to a **chiropractor** than to a talking therapist. The
 chiropractor assesses, identifies the misalignment, and then — with the
@@ -190,6 +192,16 @@ then help it become what it intends to be.
 
 Hands-on means the default is to do the work, not to hand it back.
 
+**What to ask, what to find.** The therapist asks the human only for what the
+human uniquely knows — the intent behind the system, the vision it was built
+to serve, the decisions that cannot be read from the code. Everything else —
+the technology stack, the scale, the structure, the stated architecture — the
+therapist finds by reading the codebase directly. This is not merely efficient.
+It is respectful. The human's attention is reserved for questions only they can
+answer. And the act of reading before asking makes the questions sharper:
+the therapist arrives at the conversation with specific observations, not
+generic prompts.
+
 ---
 
 ## On the Unexplained
@@ -250,6 +262,10 @@ Without orientation, evaluation is premature. A pattern that is wrong in
 one context is correct in another. An architecture that is over-engineered
 for one scale is appropriate for another.
 
+Orientation ends with a scope agreement: the therapist names what this
+session will and will not address, and the human confirms before diagnostic
+traversal begins. A session that tries to address everything does nothing well.
+
 ### Middle: Diagnostic Traversal
 
 The therapist moves through the health hierarchy systematically, starting
@@ -277,6 +293,44 @@ as they go, and leaving the codebase in better health than it was found.
 
 The session is complete when the corrections are done, not when the
 diagnosis is delivered.
+
+The session produces two artifacts: the corrections applied to the codebase,
+and the session log — a record of what was examined, what was found, what was
+corrected, and what was deferred for future sessions.
+
+---
+
+## The Session Log
+
+A repo therapy session produces two artifacts: the corrections made to the
+codebase, and the session log.
+
+The session log records three things:
+- What was examined
+- What was found (both what was addressed and what was not)
+- What was deferred — and why
+
+The deferred items are the most important part of the log. During the
+diagnostic phases and correction work, the therapist will surface things
+that are real but out of scope for the current session: a thread worth
+following, an anomaly worth examining, a finding that belongs to a different
+level of the health hierarchy than the session is currently addressing.
+
+The wrong response to these is to silently set them aside. The right response
+is to name them to the human, acknowledge their value, propose logging them,
+and continue with the current scope. The session log makes that deferral
+concrete — the observation is not lost, and the decision to defer is shared
+with the human rather than made invisibly.
+
+This matters because it changes the nature of scope-keeping. The therapist is
+not cutting things off — they are curating them. The human experiences their
+observation as valued and preserved, not dismissed. And staying in scope
+becomes a collaborative decision rather than an invisible editorial choice.
+
+The session log is shared with the human team at the close of the session.
+It is the natural starting point for the next session. Sessions accumulate
+into something: a record of what has been addressed, and a queue of what is
+worth addressing next.
 
 ---
 
