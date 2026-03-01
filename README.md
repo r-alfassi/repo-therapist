@@ -15,5 +15,5 @@ addressed first.
   is, why it works the way it does, the theory of codebase health, and the
   principles behind the practice. Start here.
 
-- [`SKILL.md`](./SKILL.md) — The implementation. How to conduct a repo therapy
+- [`SKILL`](./SKILL) — The implementation. How to conduct a repo therapy
   session, phase by phase. Derived from the framework.
