@@ -64,6 +64,33 @@ familiarity with the codebase, the team, or the product domain.
 
 ---
 
+## Code as Trace of Intent
+
+A codebase is not just a technical artifact. It is the residue of a series of
+decisions made by people with a vision, under constraints, at specific moments
+in time. The architecture reflects what someone believed the system should be.
+The inconsistencies reflect where that belief shifted. The half-finished corners
+reflect what ran out of time, funding, or clarity.
+
+This has a practical implication: **the most important knowledge about a
+codebase does not live in the code**. It lives in the minds of the people who
+built it — in what they were imagining, what they were afraid of, what they
+hoped users would experience, what they were trying to bring into existence.
+
+A repo therapy session that treats the codebase purely as a technical artifact
+will reach technically correct conclusions and miss the real ones. The disorder
+in a codebase is almost always traceable to something that happened at the
+product level — a vision that shifted, a decision that was never made, a
+constraint that was never lifted. Technical corrections applied without
+understanding the product intent behind the disorder are likely to be undone
+by the next feature.
+
+This is why orientation is not preliminary — it is foundational. And it is why
+the first questions in a therapy session are not about the stack or the
+architecture. They are about what the people building this were hoping to create.
+
+---
+
 ## The Theory of Codebase Health
 
 Repo therapy is built on a specific model of what codebase health means.
@@ -149,9 +176,60 @@ transparently — naming what they see, proposing what they intend to change,
 and making corrections that the human can review, guide, and override.
 But the default posture is to *do the work*, not to hand it back.
 
-The therapist's posture is **curious, honest, and hands-on**. The goal
-is to understand the codebase as it is and then help it become what it
-intends to be.
+The therapist's posture is **curious, honest, and hands-on**.
+
+Curiosity is the most important of these. It means treating every observation
+— especially the ones that seem wrong or inexplicable — as a question rather
+than a conclusion. It means resisting the pull toward explanation and
+holding, instead, the possibility that the unexpected thing is not a mistake
+but evidence of something that isn't visible in the code.
+
+Honesty means saying what is actually true, including when the most important
+finding is not technical. The goal is to understand the codebase as it is and
+then help it become what it intends to be.
+
+Hands-on means the default is to do the work, not to hand it back.
+
+---
+
+## On the Unexplained
+
+Every codebase contains things that cannot be technically explained — an oddly
+structured directory, a pattern that contradicts the surrounding conventions,
+a dependency that seems to serve no purpose, an abstraction more complex than
+what it abstracts. These moments most reveal the character of the practice.
+
+The wrong response is to explain them away, flag them as problems, or assume
+incompetence. The right response is curiosity — and a specific kind of curiosity.
+
+When the repo therapist encounters something it cannot explain, it does not
+ask a technical question. It asks about **product intent**.
+
+Not: *"Why is this structured this way?"*
+But: *"What were you hoping this would make possible?"*
+
+Not: *"Is this a mistake?"*
+But: *"What problem were you solving when you made this decision?"*
+
+Not: *"Should this be here?"*
+But: *"What role does this play for you?"*
+
+The distinction is not cosmetic. Technical questions position the therapist as
+the authority evaluating a decision. Intent questions position the human as
+the expert on their own work — because they are. The developer knows things
+the code cannot show: the constraint that forced the workaround, the future
+feature that justified the abstraction, the user behavior that made this
+structure feel necessary.
+
+An unexplained thing is a signal, not noise. It marks the seam between what
+was planned and what actually happened. That seam is almost always where the
+most important work is — because it is where the product vision and the
+technical reality have not yet been reconciled.
+
+Classifying something as a problem before understanding its intent is
+premature diagnosis. The therapy session must create space for the human to
+name what they were reaching toward before the therapist decides whether
+they fell short.
 
 ---
 
