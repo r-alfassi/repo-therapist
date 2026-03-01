@@ -1,0 +1,180 @@
+# Repo Therapy — Skill
+
+This document defines how to conduct a repo therapy session.
+It is the implementation of the practice described in `REPO_THERAPY_FRAMEWORK.md`.
+Where the two documents conflict, `REPO_THERAPY_FRAMEWORK.md` takes precedence.
+
+---
+
+## Invocation
+
+Repo therapy is invoked when a developer or team wants an honest, structured
+diagnosis of their codebase followed by active correction of what is found.
+This is not a code review, not a linting pass, not a report delivered and
+left on the table.
+
+A repo therapy session reads, understands, diagnoses, and then *fixes* —
+in that order, collaboratively with the human team.
+
+---
+
+## Phase 1: Orientation
+
+Before examining any code, establish context.
+
+**Gather:**
+- What is this codebase? What does the product or system do?
+- What technology stack is in use (language, frameworks, major dependencies)?
+- Approximately how large is the codebase (files, lines of code, age)?
+- Are there any stated architectural principles or patterns (README, ARCHITECTURE docs)?
+- Is there anything the team already knows is a problem?
+
+**Do not skip this phase.** A pattern that is wrong in one context is correct
+in another. Without orientation, every evaluation is premature.
+
+---
+
+## Phase 2: Structural Integrity Check
+
+Before anything else, confirm the codebase can be built, run, and tested.
+
+**Check:**
+- Does the project have a clear build/run path (package.json scripts, Makefile, etc.)?
+- Are dependencies declared and resolvable?
+- Do the stated entry points exist?
+- Are there tests? Do they appear to be passing (or at least runnable)?
+
+**Finding:** State clearly whether structural integrity is intact, degraded,
+or broken. If broken, this is the primary finding — do not proceed to deeper
+analysis without noting this prominently.
+
+---
+
+## Phase 3: Architectural Coherence
+
+Assess whether the codebase has a recognizable structure and whether the
+code respects it.
+
+**Look for:**
+- Is there a discernible architectural pattern (layered, feature-based, MVC, etc.)?
+- Do the directory structure and module boundaries reflect this pattern?
+- Are there modules or files that clearly violate the intended structure?
+- Does the codebase's self-description (README, docs, naming) match what it actually does?
+
+**Finding:** Name the architectural pattern (or note its absence). Identify
+any significant violations of that pattern with specific examples.
+
+---
+
+## Phase 4: Consistency of Practice
+
+Assess whether the codebase applies its own conventions uniformly.
+
+**Look for:**
+- Naming conventions (files, functions, variables, components) — consistent or mixed?
+- Error handling patterns — does the codebase have one approach or several?
+- Data flow patterns — does state/data move through the system the same way everywhere?
+- Testing patterns — are there tests, and do they follow a consistent approach?
+
+**Finding:** Identify the dominant convention at each dimension, and note
+where significant deviations occur. Do not flag every inconsistency —
+flag patterns of inconsistency that create cognitive overhead.
+
+---
+
+## Phase 5: Coupling and Dependency Health
+
+Assess whether dependencies between modules and layers are appropriate.
+
+**Look for:**
+- Cross-layer imports that bypass established abstractions
+- Circular dependencies
+- Modules that know too much about the internals of other modules
+- Shared mutable state that couples otherwise independent components
+- Large, central files that many others depend on (potential coupling hubs)
+
+**Finding:** Name specific coupling problems with concrete examples. Note
+the direction of the violation (e.g., "UI layer imports directly from the
+data layer, bypassing the service layer established in X").
+
+---
+
+## Phase 6: Signal Clarity
+
+Assess whether the code communicates intent clearly.
+
+**Look for:**
+- Functions or methods whose names do not match what they do
+- Files or modules whose purpose is unclear from their name or contents
+- Long functions that do several unrelated things
+- Magic values (hardcoded strings, numbers) without named constants
+- Comments that explain *what* rather than *why* (often a sign that the code
+  itself is not clear enough)
+
+**Do not conflate signal clarity with code style.** An unconventional
+approach can be perfectly clear. A "clean" approach can be opaque.
+The question is: does a reader understand what this code intends to do?
+
+**Finding:** Identify the most significant signal clarity gaps. Focus on
+the cases that most impede a developer's ability to make confident changes.
+
+---
+
+## Phase 7: Synthesis
+
+Produce a prioritized summary of findings before beginning corrections.
+
+**Structure:**
+
+### What Is Working
+2–4 honest observations about what the codebase does well. This is not
+reassurance — it is part of an accurate diagnosis. Omitting it produces
+a distorted picture.
+
+### Primary Findings
+3–5 findings, ordered by the health hierarchy (structural integrity first,
+signal clarity last). For each finding:
+- **Name it** — one clear sentence describing the problem
+- **Ground it** — one specific example from the codebase
+- **Explain why it matters** — what friction, risk, or drag it creates
+
+### Proposed Corrections
+For each primary finding, state what correction will be made and where.
+This gives the human team the opportunity to adjust priorities, add context,
+or redirect before any changes are applied.
+
+Confirm with the human team before proceeding to Phase 8.
+
+---
+
+## Phase 8: Correction
+
+Work through the findings in priority order and make the corrections.
+
+For each correction:
+1. State what you are about to do and why
+2. Make the change
+3. Confirm it addresses the finding
+4. Move to the next
+
+**Stay in scope.** Corrections address the findings from the synthesis.
+New issues discovered during correction are noted for a follow-up session —
+they are not grounds for expanding the current one without agreement.
+
+**Work transparently.** Every change is visible and explainable. The human
+team can redirect, override, or pause at any point.
+
+The session is complete when all agreed corrections have been made.
+
+---
+
+## Quality Check
+
+Before closing the session, verify:
+
+- [ ] Every finding was grounded in a specific, named example from the codebase
+- [ ] Corrections addressed the findings in priority order
+- [ ] No changes were made outside the agreed scope
+- [ ] The codebase can still be built and run after corrections
+- [ ] What Is Working was genuinely acknowledged, not perfunctory
+- [ ] The human team confirmed the synthesis before corrections began
